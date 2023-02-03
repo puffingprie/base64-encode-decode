@@ -1,14 +1,10 @@
 import base64 as b64
 import tkinter as tk
 
-# # user_input = input("Enter the string to be encoded: ").encode()
-# # encode_num = int(input("Enter the amount of times to encode the string: "))
-
 
 def encode_string(b_string, count):
     if count <= 0:
         return b_string.decode()
-
     return encode_string(b64.urlsafe_b64encode(b_string), count - 1)
 
 
@@ -19,13 +15,13 @@ def decode_string(b_string):
 
 def on_focus_in(event, entry, placeholder):
     if entry.get() == placeholder:
-        entry.delete(0, "end")  # delete placeholder
+        entry.delete(0, "end")
         entry.config(fg='black')
 
 
 def on_focus_out(event, entry, placeholder):
     if entry.get() == '':
-        entry.insert(0, placeholder)  # insert placeholder
+        entry.insert(0, placeholder)
         entry.config(fg='gray')
 
 
@@ -62,7 +58,7 @@ encode_result_scrollbar = tk.Scrollbar(encode_result_frame)
 encode_result_label = tk.Text(
     encode_result_frame, height=5, width=20, yscrollcommand=encode_result_scrollbar.set)
 
-# place widgets using grid
+# pack widgets
 encode_input.pack()
 encode_count_input.pack()
 encode_button.pack()
